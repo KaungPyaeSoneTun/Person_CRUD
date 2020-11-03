@@ -1,0 +1,17 @@
+{
+  "name": "person_crud",
+  "version": "1.0.0",
+  "description": "simple person management system vue project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kaung Pyae Sone Tun",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "jquery": "^3.5.1",
+    "vue": "^2.6.12",
+    "vuetify": "^2.3.16"
+  }
+}
