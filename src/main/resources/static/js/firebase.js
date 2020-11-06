@@ -11,7 +11,7 @@ function firebaseInit() {
 	
 	firebase.initializeApp(firebaseConfig);
 	const messaging = firebase.messaging();
-	  const tokenDivId = 'token_div';
+	 const tokenDivId = 'token_div';
 	  const permissionDivId = 'permission_div';
 
 	  // [START receive_message]

@@ -6,7 +6,8 @@ Requirement: java version 1.8 and above
 			 npm any version
 
 ## Setup project enviroment
-- go to src/main/
+- go to src/main/resources/static/
 - run "npm install"
+- source database person_crudDB.sql
 ## Test project
 - run mvn spring-boot:run
