@@ -2,12 +2,15 @@ package com.kpst.demo.domain;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "person")
 public class Person extends AbstractEntity {
 	
 	@Column(name = "firstName", length = 200)
@@ -20,14 +23,19 @@ public class Person extends AbstractEntity {
 	private String email;
 	
 	@Column(name = "dateOfBirth")
-	@Temporal(TemporalType.DATE)
 	private LocalDate dateOfBirth;
-	
-	@Column(name = "latitude")
-	private float latitude;
-	
-	@Column(name = "longitude")
-	private float longitude;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "addressId")
+	private Address address;
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -60,27 +68,17 @@ public class Person extends AbstractEntity {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-
-	public float getLatitude() {
-		return latitude;
+	
+	public static Person create(String firstName,String lastName) {
+		Person person = new Person();
+		person.setFirstName(firstName);
+		person.setLastName(lastName);
+		return person;
 	}
-
-	public void setLatitude(float latitude) {
-		this.latitude = latitude;
-	}
-
-	public float getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(float longitude) {
-		this.longitude = longitude;
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", dateOfBirth="
-				+ dateOfBirth + ", latitude=" + latitude + ", longitude=" + longitude + "]";
+				+ dateOfBirth + ", address=" + address + "]";
 	}
-
 }

@@ -12,6 +12,8 @@ public interface AbstractDao<E> {
 	public void delete(E e) throws ServiceUnavailableException;
 	
 	public boolean delete(String queryString, int id);
+	
+	public boolean delete(String queryString, long id);
 
 	public long getCount(String queryString);
 	
@@ -19,9 +21,9 @@ public interface AbstractDao<E> {
 
 	public List<E> findByDate(String queryString, LocalDate date);
 
-	public List<E> findByDateRange(String queryString, LocalDate startDate, LocalDate endDate);
-
 	public List<E> findByInteger(String queryString, int data);
+	
+	public List<E> findByLong(String queryString, long data);
 
 	public List<E> findByInteger(String queryString, int data, int data1);
 

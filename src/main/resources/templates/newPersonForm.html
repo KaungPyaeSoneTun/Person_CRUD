@@ -1,0 +1,34 @@
+<form id="personForm" v-on:submit="save(person)"
+	style="width: 500px; background-color: white; margin: 20px auto; padding: 20px; border-radius: 10px; box-shadow: 0 0 5px gray">
+	<h3>Person Registration Form</h3>
+	<v-text-field type="text" style="width:200px;" label="First Name"
+		v-model="person.firstName" required="required"
+		 pattern="[a-zA-Z\s\d]{2,25}"></v-text-field>
+
+	<v-text-field type="text" style="width:200px;" label="Last Name"
+		v-model="person.lastName" required="required" 
+		 pattern="[a-zA-Z\s\d]{2,25}"></v-text-field>
+
+	<v-text-field type="email" style="width:200px;" label="Email"
+		v-model="person.email" required="required"
+		pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"></v-text-field>
+
+	<span class="ui input"> <input type="date" id="formDate"
+		v-model="person.dateOfBirth" placeholder="mm/dd/yyyy"
+		required="required" value="person.dateOfBirth" />
+	</span>
+
+	 <v-text-field id="latText" type="text" style="width:200px;" label="latitude"
+		v-model="person.address.latitude" disabled="disabled"></v-text-field> 
+		
+		<v-text-field id="langText" type="text" style="width:200px;" label="longitude"
+		v-model="person.address.longitude" disabled="disabled"></v-text-field>
+	<p>Choose your address in map:</p>
+	<div id="map">
+	</div>
+	<button type="submit" style="margin-top:10px" class="btn btn-primary">Save</button>&nbsp;
+	<button type="cancel" style="margin-top:10px" class="btn btn-danger" v-on:click="cancel()">Cancel</button>
+</form>
+<script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9m677P7HWaN0vZhpiCMNCTlsIhMurjd8&callback=initMap">
+</script>
